@@ -5,6 +5,7 @@ import React, {useState, useEffect} from 'react'
 import uniqid from 'uniqid';
 
 import Card from './Components/Card.js'
+import { click } from '@testing-library/user-event/dist/click';
 
 const staticDeck = [
   {name: 'C1', img: '', key: uniqid()},
@@ -13,6 +14,16 @@ const staticDeck = [
   {name: 'C4', img: '', key: uniqid()},
   {name: 'C5', img: '', key: uniqid()},
   {name: 'C6', img: '', key: uniqid()},
+  {name: 'C7', img: '', key: uniqid()},
+  {name: 'C8', img: '', key: uniqid()},
+  {name: 'C9', img: '', key: uniqid()},
+  {name: 'C10', img: '', key: uniqid()},
+  {name: 'C11', img: '', key: uniqid()},
+  {name: 'C12', img: '', key: uniqid()},
+  {name: 'C13', img: '', key: uniqid()},
+  {name: 'C14', img: '', key: uniqid()},
+  {name: 'C15', img: '', key: uniqid()},
+  {name: 'C16', img: '', key: uniqid()},
 ];
 
 function App() {
@@ -40,28 +51,17 @@ function App() {
   }
 
   const [score, setScore] = useState(0);
-
-  function handleScore(e, operation) {
-    if( operation === "add" ){
-      setScore((s) => s + 1);
-      return;
-    } else if ( operation === "reset") {
-      setScore( 0 );
-      return;
-    }
-  }
-
-
+  const [highScore, setHighScore] = useState(0);
 
   const [ clickedArray, setClickedArray ] = useState([]);
 
   function handleClickTile(e, targetObject){
     e.preventDefault()
 
-    console.log(`You've reached handleClickTitle, targeting: `, targetObject)
+    // console.log(`You've reached handleClickTitle, targeting: `, targetObject)
     
     if(clickedArray.includes(targetObject)){
-        console.log(`clickedArray includes ^targetObject^, resetting clickedArray to []`)
+        // console.log(`clickedArray includes ^targetObject^, resetting clickedArray to []`)
         //reset clickedArray
         setClickedArray([]);
         setScore(0);
@@ -69,12 +69,20 @@ function App() {
         randomizeDeck();
         return;
     } 
-    console.log(`clickedArray DOES NOT include ^targetObject^, appending object to clicked array`)
+    // console.log(`clickedArray DOES NOT include ^targetObject^, appending object to clicked array`)
     setClickedArray(clickedArray.concat(targetObject));
-    console.log(clickedArray);
+    // console.log(clickedArray);
     setScore( s => s + 1);
     randomizeDeck()
   }
+
+  useEffect(() => {
+    // console.log(score);
+    // console.log(clickedArray);
+    if(score > highScore){
+      setHighScore(score);
+    }
+  }, [score])
   
   const [deck, setDeck] = useState(getRandomDeck());
 
@@ -96,12 +104,23 @@ function App() {
   return (
     <div className="App">
       <div className='Content'>
-        <h1>
-          what's happening my dudes.
-        </h1>
-        <h2>
-          The current score is: {score}
-        </h2>
+        <div className='titleContent'>
+          <h1>
+            Don't click the same card twice
+          </h1>
+          <h3>
+            Can you click all 16 symbols?
+          </h3>
+        </div>
+        
+        <div className='scorePane'>
+          <h3>
+            High Score: {highScore} 
+            {'\n'}
+            Current Score: {score}
+          </h3>
+        </div>
+        
         <div className='cardContainer'>
           {cardArr}
         </div>

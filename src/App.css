@@ -6,4 +6,17 @@
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.scorePane {
+  display: block;
+  position: sticky;
+  /* height: 100px; */
+  padding: 1px;
+  /* margin-top: 20px; */
+  /* right: 20px; */
+  white-space: pre-wrap;
+  top: 0px;
+  background-color: teal;
 }

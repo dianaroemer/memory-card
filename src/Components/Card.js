@@ -8,7 +8,7 @@ function Card(props){
     return(
         <div className="cardSlot" onClick={e=> props.handleClickTile(e, props.card)}>
             <h3>
-                I am an individual card. Here are my details:
+                I am a card. 
             </h3>
             <h2>
                 {props.card.name}

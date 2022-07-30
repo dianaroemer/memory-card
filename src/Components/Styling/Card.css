@@ -1,7 +1,10 @@
 
 .cardSlot{
-    height: 200px; 
-    width: 200px;
+    height: 150px; 
+    width: 210px;
     background-color: grey;
     margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
 }
+
