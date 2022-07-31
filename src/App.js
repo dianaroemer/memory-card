@@ -25,7 +25,7 @@ const staticDeck = [
   {name: 'C13', img: '', key: uniqid(), title: 'Left Fire'},
   {name: 'C14', img: '', key: uniqid(), title: 'Right Fire'},
   {name: 'C15', img: '', key: uniqid(), title: 'Right Spear'},
-  {name: 'C16', img: '', key: uniqid(), title: 'Left'},
+  {name: 'C16', img: '', key: uniqid(), title: 'Left Spear'},
 ];
 
 function App() {
@@ -93,6 +93,13 @@ function App() {
     setDeck(getRandomDeck());
   }
 
+  const [spoiler, setSpoiler] = useState(false);
+
+  function handleSpoiler(e) {
+    e.preventDefault();
+    setSpoiler(!spoiler);
+  }
+
 
   let cardArr = [];
   deck.forEach(element => {
@@ -109,6 +116,14 @@ function App() {
     <div className="App" style={{backgroundColor: 'bisque'}}>
       <Navbar/>
       <div className='Content'>
+      <div className='scorePane'>
+          <h3>
+            High Score: {highScore} 
+            {'\n'}
+            Current Score: {score}
+          </h3>
+        </div>
+
         <div className='titleContent'>
           <h1>
             Don't click the same card twice
@@ -117,14 +132,15 @@ function App() {
             Can you click all 16 symbols?
           </h3>
         </div>
-        <img src={wishSymbols} height={'400px'} alt='A Spoiler showing all of the symbols from the wishing wall in a 4x4 grid.'/>
-        <div className='scorePane'>
-          <h3>
-            High Score: {highScore} 
-            {'\n'}
-            Current Score: {score}
-          </h3>
-        </div>
+        {spoiler 
+        ? <img 
+            src={wishSymbols} 
+            height={'400px'} 
+            alt='A Spoiler showing all of the symbols from the wishing wall in a 4x4 grid.'
+            onClick={e=> handleSpoiler(e)}/> 
+        : <h3 className='spoilerText' onClick={e => handleSpoiler(e)}>Click me to show the cheat sheet</h3>
+        }
+
         
         <div className='cardContainer'>
           {cardArr}

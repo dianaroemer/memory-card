@@ -25,4 +25,40 @@
   top: 0px;
   background-color: teal;
   z-index: 5;
+
+   
+  background-color: rgb(240, 206, 206);
+  border-radius: 5px;
+  border: 2px solid rgb(92, 72, 72);
+  box-shadow: 0 0 10px rgb(92 72 72);
+
+}
+
+
+.spoilerText{
+  position: relative
+}
+
+.spoilerText:after {
+  content: '';
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #555358;
+  transition: width 0.3s;
+}
+
+.spoilerText:hover:after {
+  width: 250px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .scorePane{
+    border-top: 0px;
+    border-radius: 0px 0px 5px 5px;
+  }
 }

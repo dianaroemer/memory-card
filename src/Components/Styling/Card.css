@@ -5,10 +5,12 @@
     /* justify-content: flex-end; */
     height: 180px; 
     width: 210px;
-    background-color: grey;
+    background-color: rgb(218, 140, 140);
+    border-radius: 5px;
+    border: 2px solid rgb(92, 72, 72);
+    box-shadow: 0 0 10px rgb(92 72 72);
     margin: 20px;
     padding: 20px;
-    border-radius: 5px;
 
 }
 
