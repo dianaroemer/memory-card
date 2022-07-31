@@ -4,27 +4,28 @@ import './App.css';
 import React, {useState, useEffect} from 'react'
 import uniqid from 'uniqid';
 
+import Navbar from './Components/Navbar.js';
 import Card from './Components/Card.js'
 import wishSymbols from './Media/wishSymbols.png'
 import { click } from '@testing-library/user-event/dist/click';
 
 const staticDeck = [
-  {name: 'C1', img: 'wishSymbols', key: uniqid()},
-  {name: 'C2', img: '', key: uniqid()},
-  {name: 'C3', img: '', key: uniqid()},
-  {name: 'C4', img: '', key: uniqid()},
-  {name: 'C5', img: '', key: uniqid()},
-  {name: 'C6', img: '', key: uniqid()},
-  {name: 'C7', img: '', key: uniqid()},
-  {name: 'C8', img: '', key: uniqid()},
-  {name: 'C9', img: '', key: uniqid()},
-  {name: 'C10', img: '', key: uniqid()},
-  {name: 'C11', img: '', key: uniqid()},
-  {name: 'C12', img: '', key: uniqid()},
-  {name: 'C13', img: '', key: uniqid()},
-  {name: 'C14', img: '', key: uniqid()},
-  {name: 'C15', img: '', key: uniqid()},
-  {name: 'C16', img: '', key: uniqid()},
+  {name: 'C1', img: 'wishSymbols', key: uniqid(), title: 'Down Bird'},
+  {name: 'C2', img: '', key: uniqid(), title: 'Sitting Bird'},
+  {name: 'C3', img: '', key: uniqid(), title: 'Up Bird'},
+  {name: 'C4', img: '', key: uniqid(), title: 'Standing Bird'},
+  {name: 'C5', img: '', key: uniqid(), title: 'Seaweed Fish'},
+  {name: 'C6', img: '', key: uniqid(), title: 'Down Fish'},
+  {name: 'C7', img: '', key: uniqid(), title: 'Sixty-Nine Fish'},
+  {name: 'C8', img: '', key: uniqid(), title: 'Up Fish'},
+  {name: 'C9', img: '', key: uniqid(), title: 'Infinity Snake'},
+  {name: 'C10', img: '', key: uniqid(), title: 'Eight Snake'},
+  {name: 'C11', img: '', key: uniqid(), title: 'Down Snake'},
+  {name: 'C12', img: '', key: uniqid(), title: 'Cloud Snake'},
+  {name: 'C13', img: '', key: uniqid(), title: 'Left Fire'},
+  {name: 'C14', img: '', key: uniqid(), title: 'Right Fire'},
+  {name: 'C15', img: '', key: uniqid(), title: 'Right Spear'},
+  {name: 'C16', img: '', key: uniqid(), title: 'Left'},
 ];
 
 function App() {
@@ -77,13 +78,14 @@ function App() {
     randomizeDeck()
   }
 
+  // This useEffect handles updating highScore whenever score is changed. This function is run as a useEffect instead of in handleClickTile to avoid async issues when score updates, but could also easily be handled inside handleClickTile by using ((score+1) > highScore) and setHighScore(score+1), but this is literally what useEffect was made for, so then there's that.
   useEffect(() => {
     // console.log(score);
     // console.log(clickedArray);
     if(score > highScore){
       setHighScore(score);
     }
-  }, [score])
+  }, [score, highScore])
   
   const [deck, setDeck] = useState(getRandomDeck());
 
@@ -104,7 +106,8 @@ function App() {
   })
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: 'bisque'}}>
+      <Navbar/>
       <div className='Content'>
         <div className='titleContent'>
           <h1>
@@ -114,8 +117,7 @@ function App() {
             Can you click all 16 symbols?
           </h3>
         </div>
-        <img src={wishSymbols} height={'400px'}/>
-        
+        <img src={wishSymbols} height={'400px'} alt='A Spoiler showing all of the symbols from the wishing wall in a 4x4 grid.'/>
         <div className='scorePane'>
           <h3>
             High Score: {highScore} 

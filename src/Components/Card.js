@@ -14,7 +14,7 @@ function Card(props){
                 {props.card.name}
             </h2>
             <div className="imgContainer">
-                <img src={props.wishSymbols} className='wishSymbol' id={props.card.name}/>
+                <img src={props.wishSymbols} className='wishSymbol' id={props.card.name} alt={props.card.title}/>
             </div>
             
         </div>
