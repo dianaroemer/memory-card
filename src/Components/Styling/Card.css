@@ -1,10 +1,100 @@
 
 .cardSlot{
-    height: 150px; 
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
+    height: 180px; 
     width: 210px;
     background-color: grey;
     margin: 20px;
     padding: 20px;
     border-radius: 5px;
+
 }
 
+.imgContainer {
+    /* display: block; */
+    width: 100px;
+    height: 100px;
+    /* margin-left: 52px; */
+    /* background-color: green; */
+    /* position: relative; */
+    /* left: 0px; */
+    /* bottom: 0px; */
+}
+
+.wishSymbol{
+    position: relative;
+    width: 700px;
+    height: 700px;
+    /* scale: .1; */
+    right: 242px;
+    bottom: 323px;
+
+    object-fit: cover;
+    clip-path: circle(81px);
+}
+
+#C1 {
+    object-position: left 253px top 253px;
+}
+
+#C2 {
+    object-position: left 87px top 211px;
+}
+
+#C3 {
+    object-position: right 80px top 170px;
+}
+
+#C4 {
+    object-position: right 246px top 129px;
+}
+
+#C5 {
+    object-position: left 253px top 88px;
+}
+
+#C6 {
+    object-position: left 87px top 47px;
+}
+
+#C7 {
+    object-position: right 80px top 5px;
+}
+
+#C8 {
+    object-position: right 246px top -37px;
+}
+
+#C9 {
+    object-position: left 253px top -78px;
+}
+
+#C10 {
+    object-position: left 87px top -120px;
+}
+
+#C11 {
+    object-position: right 79px top -160px;
+}
+
+#C12 {
+    object-position: right 246px top -202px;
+}
+
+#C13 {
+    object-position: left 253px top -243px;
+}
+
+#C14 {
+    object-position: left 87px top -285px;
+}
+
+#C15 {
+    object-position: right 79px top -327px;
+}
+
+#C16 {
+    object-position: right 246px top -368px;
+}
